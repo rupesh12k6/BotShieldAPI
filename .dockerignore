@@ -1,0 +1,15 @@
+**/.git
+**/.gitignore
+**/.idea
+**/.vscode
+**/target
+**/*.class
+**/mvnw
+**/mvnw.cmd
+**/.mvn
+HELP.md
+*.log
+.env
+.env.*
+!.env.example
+

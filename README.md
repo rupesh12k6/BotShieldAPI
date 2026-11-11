@@ -97,35 +97,38 @@ Implemented using atomic Redis operations (`INCRBY`).
 
 ## ▶️ How to Run
 
-### 1. Start PostgreSQL
+### Option A: Run Everything with Docker Compose (Recommended)
 
-Make sure your database is running.
-
----
-
-### 2. Start Redis using Docker
+Start the Spring Boot application, PostgreSQL, and Redis with a single command:
 
 ```bash
-docker run -d -p 6379:6379 --name redis redis
+docker-compose up --build
 ```
+Or in detached mode:
+```bash
+docker-compose up -d --build
+```
+
+To stop all services:
+```bash
+docker-compose down
+```
+
+The application will be accessible at: `http://localhost:8089`
 
 ---
 
-### 3. Configure application.properties
+### Option B: Run Locally with Maven
 
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/BOTSHIELD
-spring.datasource.username=postgres
-spring.datasource.password=your_password
+#### 1. Start PostgreSQL
+Make sure PostgreSQL is running locally on port `5432` with database `BOTSHIELD`.
 
-spring.data.redis.host=localhost
-spring.data.redis.port=6379
+#### 2. Start Redis using Docker
+```bash
+docker run -d -p 6379:6379 --name redis redis:7-alpine
 ```
 
----
-
-### 4. Run the Application
-
+#### 3. Run the Application
 ```bash
 mvn spring-boot:run
 ```
